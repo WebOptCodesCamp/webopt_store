@@ -24,6 +24,7 @@ p{
   color:green;
 }
 
+
 .input{
   width:80%;
   
@@ -38,6 +39,7 @@ p{
   font-size: 13px;
   text-decoration: none;
   background: white;
+  color: black;
 }
 .put{
   display: flex;
@@ -48,7 +50,7 @@ p{
   margin-top: 14px;
   background: white;
   width: 80%;
-  margin-left: 10%;
+  margin-left: 6%;
   padding: 6px;
 }
 
@@ -67,6 +69,8 @@ p{
 }
 .tagname{
   margin-left: 12px;
+  color: black;
+  margin-top: 1px;
 }
 .box{
   width:150px;
@@ -103,6 +107,8 @@ p{
   outline: none;
   border-radius: 5px;
   margin-bottom: 15px;
+
+  
 }
 .flex{
   display:flex;
@@ -231,4 +237,15 @@ sp{
   color: white;
   font-family: serif;
   margin-left: 12px;
+}
+
+.profile{
+  width:100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.enclose{
+  width:100%;
+  height: 200px;
 }

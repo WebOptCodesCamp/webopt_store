@@ -5,6 +5,7 @@ import Mpesa from "./paymentmode/mpesa";
 import Paypall from "./paymentmode/PayPal";
 import Cash from "./paymentmode/cash";
 import Stock from "./stock";
+import { MdAddBusiness } from "react-icons/md";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { FaGift } from "react-icons/fa6";
 const View = () =>{
@@ -35,7 +36,7 @@ for(let i =0; i < data.length; i++){
     <header className="head">
     <IoChevronBackSharp size={30} color="blue"onClick={()=>navigate("/")} />
     <div>    <h3 className="tagname">Shopify</h3></div>
-    <div>    <h3 className="user">John Doe</h3></div>
+    <div>    <h3 className="user">oparero</h3></div>
 
     <div style={{ paddingLeft:60,display:"flex",justifyContent:"space-between"}}>
    <FaGift size={30} color="yellow" style={{marginLeft:28}}/> <h3 style={{color:"rgba(20,188,92,0.341)",marginLeft:12,textShadow: "red"}}>Gift</h3>

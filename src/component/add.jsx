@@ -1,4 +1,4 @@
-import React,{useState,useRef} from "react";
+import React,{useState,useRef,useEffect} from "react";
 import "../styles/shop.css";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
@@ -21,10 +21,10 @@ const [price , setPrice] = useState(null);
 const [quantity , setQuantity] = useState(null);
 const [tax , setTax] = useState(null);
 const [progress , setProgress] = useState(0);
-  const handleupload = () =>{
-    inputref.current.click();
-    const storage = getStorage();
-const storageRef = ref(storage, file.name);
+useEffect(()=>{
+  if(file){
+const storage = getStorage();
+const storageRef = ref(storage, `stocks/${file.name}`);
 
 const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -54,22 +54,31 @@ uploadTask.on('state_changed',
   () => {
     // Handle successful uploads on complete
     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    getDownloadURL(storageRef).then((downloadURL) => {
       setThumb(downloadURL);
-      alert('File available at', downloadURL);
+      alert(downloadURL);
     });
   }
 );
+  }
+}, [file]);
+
+  const handleupload = () =>{
+    inputref.current.click();
+    
     
   }
   const addstock = async () =>{
+    if(thumb && stockname && price && tax && quantity){
       await addDoc(collectionref,{
         item_name:stockname,
         item_price:price,
         tax_rate:tax,
         item_quantity:quantity,
         url:thumb,
-      });
+      });}else{
+        alert("failed")
+      }
     
   }
   return(

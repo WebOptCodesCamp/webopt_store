@@ -9,11 +9,17 @@ import { RiEqualizerFill } from "react-icons/ri";
 import "../styles/shop.css";
 import {db} from "./firebase";
 import {getDocs,collection,addDoc} from "firebase/firestore";
-import img from "./image/yellowroyco.png"
+import img0 from "./image/sokosima.png";
+import img1 from "./image/ngano.png";
+import img2 from "./image/rice.png";
+import img3 from "./image/ungaraha.png";
+import img4 from "./image/yellowroyco.png";
+import img5 from "./image/tea.png";
 import Stock from "./stock";
 import View from "./view";
 const Shop = ()=>{
   const StockCollectionRef = collection(db, "Stock");
+  let rend =[img0,img1,img2,img3,img4,img0];
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(Stock);
   const [search, setSearch] = useState("");
@@ -41,9 +47,9 @@ const Shop = ()=>{
     <div className="main">
     <header className="head">
     <div style={{display:"flex"}}>  
-    <FaRegUserCircle size={30} color ="blue"/>
+    <FaRegUserCircle size={30} color ="blue" onClick={()=>navigate("/Profile")}/>
     <h3 className="tagname">Shopify</h3></div>
-    <div>    <h3 className="user">John Doe</h3></div>
+    <div>    <h3 className="user">oparero</h3></div>
        <div style={{marginLeft:30}} onClick={()=>navigate("/AddStock")}> <FaSitemap color="red" size={32}/></div>
     <div style={{display:"flex",justifyContent:"flex-end",alignItems:"flex-end",width:100}} >
     <IoCartSharp size={30} color="yellow" className="cart" onClick={()=>navigate("/View",{state:{values:data}})}/>
@@ -61,7 +67,7 @@ const Shop = ()=>{
     {filter.map((stock,index)=>
         <div  className="box" onClick={() => setData(current=>[...current,index])} key={index} >
          <h4 className="item_title">{stock.item_name}</h4>
-        <img src={stock.thumb} className="thumb" />
+        <img src={rend[index]} className="thumb" />
        <FaStar  size={20} color="rgba(16,68,37,6.341)" className="stats" />
     </div>
     )}
